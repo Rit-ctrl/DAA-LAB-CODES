@@ -1,23 +1,87 @@
 #include<iostream>
-#include<bitset>
 #include<math.h>
+#include<string.h>
 
 #define max_bits 8
 using namespace std;
 
-int decToBinary(int n) 
+int prod[][40] = {0};
+
+int decToBinary(int n, int bin[]) 
 { 
-    // Size of an integer is assumed to be 32 bits 
-	string str = "0";
-    for (int i = 31; i >= 0; i--) { 
-        int k = n >> i; 
-        if (k & 1)
-			char* temp = "1";
-			str.append(temp);
-        else
-            cout << "0"; 
-    } 
+
+	int bit = 0;
+	if(n == 0){
+		bin[0] = 0;
+		return 1;
+	}
+	int i = 0;
+	while(n !=0 ){
+		
+		bin[i] = n%2;
+		n = n/2;
+		i++;
+	}
+	cout<<i<<endl;
+
+	return i;
 }
+
+void mult(int bin[], int prod[][40], int l){
+
+	int t = 0;
+	while (t < l){
+		// cout<<endl<<"t = "<<t;
+		int i=0, b=0;
+		for(i; i<t; i++){
+			prod[t][i] = 0;
+		}
+		
+		if(bin[t] == 1){
+			for(i, b; b<l; b++, i++){
+				prod[t][i] = bin[b];
+			}
+		}
+		else{
+			for(i, b; b<l; b++, i++){
+				prod[t][i] = 0;
+			}
+		}
+
+
+		t++;
+	}
+	
+	// cout<<endl;
+	// 	for(int q=0; q<l; q++){
+	// 		cout<<endl;
+	// 		for(int p=0; p<2*l; p++){
+	// 			cout<<prod[q][p];
+	// 		}
+	// 	}
+
+
+
+	int sum = 0, carry = 0;
+	for(int i=1; i<l; i++){
+		
+		for(int j=0; j<2*l; j++){
+			sum = carry + prod[0][j] + prod[i][j];
+			prod[0][j] = sum % 2;
+			carry = sum / 2;
+		}
+	}
+
+	// cout<<endl;
+	// 	for(int q=0; q<l; q++){
+	// 		cout<<endl;
+	// 		for(int p=0; p<2*l; p++){
+	// 			cout<<prod[q][p];
+	// 		}
+	// 	}
+
+}
+
 
 int main (){
 
@@ -27,31 +91,27 @@ int main (){
 	 
 	int bits = ceil(log2f(n)) + 1;
 
-	
+	int bin[20], l = 0;
 
-	// cout<<bin;
+	for(int q=0; q<l; q++){
+		cout<<endl;
+		for(int p=0; p<2*l; p++){
+			prod[q][p] = 0;
+		}
+	}
 
-	string num1 = bitset<8>(n).to_string();
-	
-	// for(int j = 0; j<bits; j++)
-	// 	num1[j] = num1[max_bits-bits+j];
+	l = decToBinary(n, bin);
 
-	// for(int i = bits; i<max_bits; i++)
-	// 	num1[i] = '\0';
+	for(int i=0; i<l; i++)
+		cout<<bin[i];
+	cout<<endl;
 
-	string num2 = num1;
-	cout<<num1<<num2<<endl;
+	mult(bin, prod, l);
 
-	int prod = 0;
-	int i=0;
-	// while(bits >= 0){
+	cout<<"The product in binary is: ";
+	for(int i=2*l-1; i>=0; i--)
+		cout<<prod[0][i];
 
-	// 	int mult;
-	// 	if(num2[bits] == 1){
-	// 		bitset
-	// 	}
-
-	// }
-
+	cout<<endl;
 
 }	
