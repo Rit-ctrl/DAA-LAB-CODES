@@ -9,14 +9,12 @@ struct triplets{
 		int u, v, w;
 };
 
-
-
 bool cmppair(const triplets &i1, triplets &i2) 
 { 
     return (i1.w < i2.w); 
 }
 
-void MST_Prim(vector<pair<int, int>> G[], int vert){
+void Max_Weight_MST_Prim(vector<pair<int, int>> G[], int vert){
 
 	vector<pair<int, int>> MST[vert];
 
@@ -26,7 +24,6 @@ void MST_Prim(vector<pair<int, int>> G[], int vert){
 	cout<<"\n\n";
 	for(int i=0; i<vert-1; i++){
 		
-		// cout<<"1";
 		vector<triplets> pairs;
 
 		// Push all neighbours of the vertices in focus
@@ -44,13 +41,11 @@ void MST_Prim(vector<pair<int, int>> G[], int vert){
 			}
 			k++;
 		}
-		// cout<<"2";
 		
-		//Sort them to find edge with least weight
+		//Sort them to find edge with max weight
 		sort(pairs.begin(), pairs.end(), cmppair);
-		// cout<<"3";
 
-		int u = pairs[0].u, v = pairs[0].v, w = pairs[0].w;
+		int u = pairs[pairs.size()-1].u, v = pairs[pairs.size()-1].v, w = pairs[pairs.size()-1].w;
 
 		//Push minimum edge (u, v) and (v, u) into MST.
 		printf("Pushing: %d, %d, %d\n", u, v, w);
@@ -67,10 +62,9 @@ void MST_Prim(vector<pair<int, int>> G[], int vert){
 			}
 		}
 
-		// cout<<"4";
 		G[u].erase(G[u].begin()+adr);
 
-		// //Find and delete edge (v, u)		
+		// Find and delete edge (v, u)		
 		for(int j=0; j<G[v].size(); j++){
 
 			if(u == G[v][j].first){
@@ -80,10 +74,8 @@ void MST_Prim(vector<pair<int, int>> G[], int vert){
 		}
 		G[v].erase(G[v].begin()+adr);
 
-		// cout<<"4";
 		// G[u].erase(G[u].begin()+adr);
-		// cout<<"5";
-
+		
 		cout<<"\n\nEdges of G are:\n";
 
 		for(int i=0; i<vert; i++){
@@ -119,6 +111,8 @@ int main (){
 
 	get_vec(adj, v, flag);
 
-	MST_Prim(adj, v);
+	Max_Weight_MST_Prim(adj, v);
+
+	
 
 }
