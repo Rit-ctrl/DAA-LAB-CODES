@@ -1,15 +1,13 @@
 #include<bits/stdc++.h>
 #include<iostream>
 #include<vector>
-#include"input.h"
+#include"../include/input.h"
 
 using namespace std;
 
 struct triplets{
 		int u, v, w;
 };
-
-
 
 bool cmppair(const triplets &i1, triplets &i2) 
 { 
@@ -23,10 +21,9 @@ void MST_Prim(vector<pair<int, int>> G[], int vert){
 	int vertertex = 0, count = 1;
 	bool neighbour[vert] = {0};
 	neighbour[0] = 1;
-	cout<<"\n\n";
+
 	for(int i=0; i<vert-1; i++){
 		
-		// cout<<"1";
 		vector<triplets> pairs;
 
 		// Push all neighbours of the vertices in focus
@@ -44,16 +41,14 @@ void MST_Prim(vector<pair<int, int>> G[], int vert){
 			}
 			k++;
 		}
-		// cout<<"2";
 		
 		//Sort them to find edge with least weight
 		sort(pairs.begin(), pairs.end(), cmppair);
-		// cout<<"3";
 
 		int u = pairs[0].u, v = pairs[0].v, w = pairs[0].w;
 
 		//Push minimum edge (u, v) and (v, u) into MST.
-		printf("Pushing: %d, %d, %d\n", u, v, w);
+		// printf("Pushing: %d, %d, %d\n", u, v, w);
 		MST[u].push_back(make_pair(v, w));
 		MST[v].push_back(make_pair(u, w));
 		int adr;
@@ -67,7 +62,6 @@ void MST_Prim(vector<pair<int, int>> G[], int vert){
 			}
 		}
 
-		// cout<<"4";
 		G[u].erase(G[u].begin()+adr);
 
 		// //Find and delete edge (v, u)		
@@ -80,33 +74,28 @@ void MST_Prim(vector<pair<int, int>> G[], int vert){
 		}
 		G[v].erase(G[v].begin()+adr);
 
-		// cout<<"4";
-		// G[u].erase(G[u].begin()+adr);
-		// cout<<"5";
+		// cout<<"\n\nEdges of G are:\n";
 
-		cout<<"\n\nEdges of G are:\n";
-
-		for(int i=0; i<vert; i++){
-			cout<<i<<": ";
-			for(int j=0; j<G[i].size(); j++){
-				printf("(%d, %d)", G[i][j].first, G[i][j].second);
-			}
-			cout<<endl;
-		}
+		// for(int i=0; i<vert; i++){
+		// 	cout<<i<<": ";
+		// 	for(int j=0; j<G[i].size(); j++){
+		// 		printf("(%d, %d)", G[i][j].first, G[i][j].second);
+		// 	}
+		// 	cout<<endl;
+		// }
 
 		neighbour[v] = 1;
 		count ++;
 
-	
 	}
 
-	cout<<"\n\nEdges of MST are:\n";
+	cout<<"\n\nEdges of MST of the form: \nu: (v, wt)\nare:\n";
 	for(int i=0; i<vert; i++){
 		cout<<i<<": ";
 		for(int j=0; j<MST[i].size(); j++){
 			printf("(%d, %d)", MST[i][j].first, MST[i][j].second);
 		}
-	cout<<endl;
+		cout<<endl;
 	}
 }
 
@@ -118,7 +107,7 @@ int main (){
 	bool flag;
 
 	get_vec(adj, v, flag);
-
+	cout<<"\n\nOUTPUT:";
 	MST_Prim(adj, v);
 
 }
