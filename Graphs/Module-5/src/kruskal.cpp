@@ -15,7 +15,8 @@ void addedge(vector <pair<int,int>> vert[],int v,int u,int w)
 int comptrip(triplet v1,triplet v2){
 	return(v1.w<v2.w);
 }
-void MST_kruskal(vector <pair<int,int>> vert[],int v,vector <pair<int,int>> tree[]){
+void MST_kruskal(vector <pair<int,int>> vert[],int v){
+	vector <pair<int,int>> tree[v];
 	vector <triplet> edges;
 	int tess=0;
 	for(int i=0;i<v;i++){
@@ -75,9 +76,17 @@ void MST_kruskal(vector <pair<int,int>> vert[],int v,vector <pair<int,int>> tree
 				}
 			}
 		}
-		if(tn==v)
+		if(tn==v-1)
 			break;
 		
+	}
+	cout<<"\n\nEdges of MST of the form: \nu: (v, wt)\nare:\n";
+	for(int i=0; i<v; i++){
+		cout<<i<<": ";
+		for(int j=0; j<tree[i].size(); j++){
+			printf("(%d, %d)", tree[i][j].first, tree[i][j].second);
+		}
+		cout<<endl;
 	}
 }
 int main(){
@@ -106,12 +115,6 @@ int main(){
 	cout<<"\n\nOutput:\n\n";
 
 	vector <pair<int,int>> tree[n];
-	MST_kruskal(vert,n,tree);
-	for(int i=0;i<n;i++){
-		cout<<"vertex "<<i<<endl;
-		for(auto j=tree[i].begin(); j!=tree[i].end(); j++){
-			cout<<j->first<<" in "<<j->second<<endl;
-		}
-	}
+	MST_kruskal(vert,n);
 	return 0;	
 }
