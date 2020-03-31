@@ -114,7 +114,6 @@ int main(){
 
 	cout<<"\n\nOutput:\n\n";
 
-	vector <pair<int,int>> tree[n];
 	MST_kruskal(vert,n);
 	return 0;	
 }
