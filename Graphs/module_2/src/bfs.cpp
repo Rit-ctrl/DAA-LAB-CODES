@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#include"input.h"
+#include"../include/input.h"
 using namespace std;
 
 
