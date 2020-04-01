@@ -1,13 +1,8 @@
 #include<bits/stdc++.h>
-#include<iostream>
-#include<vector>
-#include"input.h"
-
 using namespace std;
-
-struct triplets{
-		int u, v, w;
-};
+ struct triplets{
+ 		int u, v, w;
+ };
 
 bool cmppair(const triplets &i1, triplets &i2) 
 { 
@@ -100,19 +95,4 @@ void Max_Weight_MST_Prim(vector<pair<int, int>> G[], int vert){
 		}
 	cout<<endl;
 	}
-}
-
-
-int main (){
-
-	vector<pair<int, int>> adj[100];
-	int v;
-	bool flag;
-
-	get_vec(adj, v, flag);
-
-	Max_Weight_MST_Prim(adj, v);
-
-	
-
 }

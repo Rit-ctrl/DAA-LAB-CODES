@@ -1,10 +1,10 @@
 #include<iostream>
 #include<bits/stdc++.h>
-
+#include"../include/helper.h"
 using namespace std;
 
-int calc_score (string, int[]);
-int len (string);
+// int calc_score (string, int[]);
+// int len (string);
 
 int n;
 
@@ -83,35 +83,35 @@ int main (){
 
 	}while(next_permutation(str.begin(), str.end()));
 
-	cout<<"\n\n\n------------------------------\n\nPartitions with max sum: "<<min_str<<endl<<endl;
+	cout<<"\n\n\n------------------------------\n\nPartitions with max sum (individually): 0 1 denote partition \n"<<min_str<<endl<<endl;
 
 
 }
 
 
-int calc_score (string str, int arr[]){
+// int calc_score (string str, int arr[]){
 
-	int A_sum = 0, B_sum = 0;
+// 	int A_sum = 0, B_sum = 0;
 
-	for(int i=0; i<n; i++){
-		cout<<str[i];
-		if(str[i] == '1'){
-			A_sum += arr[i];
-		}
-		if(str[i] == '0'){
-			B_sum += arr[i];
-		}
-	}
+// 	for(int i=0; i<n; i++){
+// 		cout<<str[i];
+// 		if(str[i] == '1'){
+// 			A_sum += arr[i];
+// 		}
+// 		if(str[i] == '0'){
+// 			B_sum += arr[i];
+// 		}
+// 	}
 
-	return abs(A_sum - B_sum);
-}
+// 	return abs(A_sum - B_sum);
+// }
 
-int len (string str){
+// int len (string str){
 
-	int i = 0;
-	while(str[i] != '\0')
-		i++;
+// 	int i = 0;
+// 	while(str[i] != '\0')
+// 		i++;
 
-	return i;
+// 	return i;
 
-}
+// }
