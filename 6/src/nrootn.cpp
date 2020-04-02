@@ -4,12 +4,12 @@ using namespace std;
 
 int main (){
 
-    // int n;
-    // cout<<"Enter value of n\n";
-    // cin>>n;
+    int n;
+    cout<<"Enter value of n\n";
+    cin>>n;
 
 
-    for(int q=0; q<100000; q++)
+    for(int q=0; q<n; q++)
     {
         int arr[q];
 

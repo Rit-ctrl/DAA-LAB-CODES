@@ -42,10 +42,19 @@ int function(int a[],int st,int end,int k)
 //    }
 // }
 int main()
-{   int N;
-    int a[]={12,7,9,2,0,-1,57};
-    N=sizeof(a)/sizeof(int);  
-    int k=7;
-     int p=function(a,0,N-1,k);
+{   		
+    int n;
+    cout<<"Enter number of elements of array\n";
+    cin>>n;
+    int a[n];
+    cout<<"Enter elements of array\n";
+    for(int i=0; i<n; i++)
+        cin>>a[i];
+    
+    int k;
+    cout<<"Enter value of k\n";
+    cin>>k;
+
+    int p=function(a,0,n-1,k);
     for(int i=0;i<=p;i++)cout<<a[i]<<" ";
 }
