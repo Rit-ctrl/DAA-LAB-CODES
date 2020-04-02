@@ -2,20 +2,20 @@
 
 using namespace std;
 
-void merge_sort(int arr[], int s, int e);
-void merge(int arr[], int s, int mid, int e);
+// void merge_sort(int arr[], int s, int e);
+// void merge(int arr[], int s, int mid, int e);
 
-int main (){
+// int main (){
 
-	int arr[] = {1, 6, 2, -5, 10};
-	merge_sort(arr, 0, 4);
+// 	int arr[] = {1, 6, 2, -5, 10};
+// 	merge_sort(arr, 0, 4);
 
-	for(int j=0; j<=4; j++)
-		cout<<arr[j]<<" ";
+// 	for(int j=0; j<=4; j++)
+// 		cout<<arr[j]<<" ";
 	
-	return 0;
+// 	return 0;
 
-}
+// }
 
 void merge(int arr[], int s, int mid, int e){
 

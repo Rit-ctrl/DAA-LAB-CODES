@@ -5,6 +5,7 @@ using namespace std;
 int main()
 {
  int i,j,n,k;
+ cout<<"Enter n\n";
  cin>>n;
  //pattern 1
  for(i=0;i<n;i++)
