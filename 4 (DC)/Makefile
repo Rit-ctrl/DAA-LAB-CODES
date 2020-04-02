@@ -1,4 +1,4 @@
-all: toh 2way 3way DC_GCD
+all: toh 2way 3way DC_GCD count_1 count_neg
 
 toh:
 	g++ src/TOH.cpp -o towers_of_hanoi
@@ -20,3 +20,8 @@ DC_GCD: obj/euclid.o src/GCD.cpp
 
 obj/euclid.o:
 	g++ -c src/euclid.c -o obj/euclid.o
+
+count_1:
+	g++ src/count_1.cpp -o count_1
+count_neg:
+	g++ src/count_neg.cpp -o count_neg
